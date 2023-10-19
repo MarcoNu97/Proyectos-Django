@@ -1,0 +1,49 @@
+{% extends "./base.html" %}
+
+{% block title %} Gestión de Cursos {% endblock %}
+
+<section class="Contenedor">
+    
+    <div class="dropdown">
+        <button onclick="toggleDropdown()" class="dropbtn">Menú</button>
+        <div id="myDropdown" class="dropdown-content">
+            <a href="#">Opción 1</a>
+            <a href="#">Opción 2</a>
+            <a href="#">Opción 3</a>
+        </div>
+    </div>
+
+{% block body %}
+
+
+<div class="row">
+    <div class="col-xl-12 bg-secondary bg-gradient bg-opacity-50">
+        
+        <table id="datatable_cursos" class="table table-striped">
+            
+            <button id="btn_Socios"><a href="edicionCurso/{{curso.codigo}}">Nuevo Socio</a><i class="fa-solid fa-user-plus"></i></button>
+            
+            <!-- <caption>
+                DataTable.js Demo
+            </caption> -->
+            <thead>
+                <tr class="bg-danger bg-gradient">
+                    <th>N* Socio</th>
+                    <th class="centered">Nombre Completo</th>
+                    <th class="centered">DNI</th>
+                    <th class="centered">Telefono</th>
+                    <th class="centered">Fecha de Nacim.</th>
+                  <!--  <th class="centered">Direccion</th> -->
+                    <!-- <th class="centered">Apto Fisico</th> -->
+                    <th class="centered">Opciones</th>
+                </tr>
+            </thead>
+            <tbody class="bg-light bg-gradient" id="tableBody_cursos">
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}
+</section>

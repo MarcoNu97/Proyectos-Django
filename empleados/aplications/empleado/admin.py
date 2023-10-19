@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.http import HttpResponse
+from django.db import models
 import csv
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from .models import Empleado, Habilidades
+from ckeditor.widgets import CKEditorWidget
 
 # Register your models here.
 admin.site.register(Habilidades)
@@ -66,3 +68,8 @@ class EmpleadoAdmin (admin.ModelAdmin):
     actions = [export_selected_to_csv, export_selected_to_pdf]
 
 admin.site.register(Empleado, EmpleadoAdmin)
+
+formfield_overrides = {
+    models.TextField: {'widget': CKEditorWidget()},
+
+   }

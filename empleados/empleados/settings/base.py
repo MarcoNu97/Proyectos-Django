@@ -1,4 +1,7 @@
 from pathlib import Path
+##Importaciones para secret.json
+import json
+from django.core.exceptions import ImproperlyConfigured
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent.parent
@@ -6,8 +9,22 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-i0n&$uz4gf(nawukhrdo6kc2=%(@kyvxftl*ksinuf2ocybm71'
+#Configuracion para el archivo secret.json
+#Apertura del archivo Json en modo lectura
+with open ("secret.json") as f:
+    secret = json.loads(f.read())
+
+#definicion de la funcion getSecret
+def get_secret (secret_name, secrets=secret):
+    try:
+        return secrets[secret_name]
+    except:
+        msg="la variable %s no existe" % secret_name
+        raise ImproperlyConfigured(msg)
+    
+#Obtencion del valor de SECRET_KEY
+SECRET_KEY = get_secret('SECRET_KEY')
+
 
 # # Application definition
 INSTALLED_APPS = [
@@ -17,11 +34,27 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    #Apps de terceros
+    'ckeditor',
     #local apps
     'aplications.departamento',
     'aplications.empleado',
     'aplications.home',
 ]
+
+#Configuracion del CK-Editor
+##
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'custom',
+        'height': 300,
+    },
+
+}
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

@@ -1,5 +1,6 @@
 from django.db import models
 from aplications.departamento.models import Departamento
+from ckeditor.fields import RichTextField
 
 # Create your models here.
 class Habilidades (models.Model):
@@ -29,7 +30,8 @@ class Empleado (models.Model):
     apellido = models.CharField('Apellido', max_length=60)
     trabajo = models.CharField('Puesto', max_length=1, choices=JOB_OPCIONES)
     Departamento = models.ForeignKey(Departamento, on_delete=models.CASCADE)
-    Habilidades= models.ManyToManyField(Habilidades)
+    observaciones = RichTextField(default="")
+    Habilidades = models.ManyToManyField(Habilidades)
     
     def __str__(self):
         return self.nombre + '-' + self.apellido + '-' + self.trabajo 
