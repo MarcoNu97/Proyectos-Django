@@ -7,11 +7,25 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    
 
 }
+
+.row{
+
+    width: 100%;
+}
+
+#tabla-socios-localidades_wrapper{
+
+    width: 100%;
+}
+
+
 .centered {
     text-align: center !important;
     vertical-align: middle !important;
+    word-wrap: break-word !important;
 }
 
 #btn_Socios{

@@ -40,13 +40,14 @@
                     <!-- <th class="centered">Distrito</th> -->
                     <th class="centered">Localidad</th>
                     <th class="centered">Teléfono 1</th>
-                    <th class="centered">Teléfono 2</th>
+                    <!-- <th class="centered">Teléfono 2</th> -->
                     <th class="centered">Correo</th>
                     <!-- <th class="centered">Descripción</th> -->
                     <th class="centered">Apto Físico</th>
                     <!-- <th class="centered">Fecha de Vencimiento del Apto Físico</th> -->
                     <th class="centered">Compite</th>
                     <th class="centered">Socio Activo</th>
+                    <th class="centered"></th>
                 </tr>
              </thead>
                 <tbody  class="bg-light bg-gradient">
@@ -60,8 +61,8 @@
                         <!-- <td>{{ item.distrito }}</td> -->
                         <td>{{ item.localidad }}</td>
                         <td>{{ item.telefono1 }}</td>
-                        <td>{{ item.telefono2 }}</td>
-                        <td>{{ item.correo }}</td>
+                        <!-- <td>{{ item.telefono2 }}</td> -->
+                        <td class="centered">{{ item.correo }}</td>
                         <!-- <td>{{ item.descripcion }}</td> -->
                         <td>{{ item.apto_fisico }}</td>
                         <!-- <td>{{ item.fecha_vencimiento_apto_fisico }}</td> -->
@@ -93,9 +94,56 @@
     <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
     
     <script>
+
         $(document).ready(function () {
-            $('#tabla-socios-localidades').DataTable();
+           $('#tabla-socios-localidades').DataTable( {
+
+ // Configuraciones de la DataTable
+//  
+    paging: false,
+    scrollCollapse: true,
+    ordering: false,
+    //Tamaño de la tabla
+    //
+    scrollY: "225px",
+    lengthMenu: [5, 10, 15, 20, 100, 200, 500],
+    columnDefs: [
+        { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
+        { orderable: false, targets: [1, 2, 3, 4, 5, 6, 7, 8, 9] },
+        { searchable: false, targets: [3, 4, 5, 6, 7] },
+        
+        // Tamaño de las columnas
+        //
+        { width: "10%", targets: [7] },
+        { width: "20%", targets: [1] },
+        { width: "10%", targets: [0] }
+    ],
+    pageLength: 3,
+    destroy: true,
+    // Configuracion del idioma de las opciones
+    //
+    language: {
+        lengthMenu: "Mostrar _MENU_ registros por página",
+        zeroRecords: "Ningún Socio encontrado",
+        info: "Mostrando de _START_ a _END_ de un total de _TOTAL_ registros",
+        infoEmpty: "Ningún Socio encontrado",
+        infoFiltered: "(filtrados desde _MAX_ registros totales)",
+        search: "Buscar Socio:",
+        loadingRecords: "Cargando...",
+        paginate: {
+            first: "Primero",
+            last: "Último",
+            next: "Siguiente",
+            previous: "Anterior"
+        }
+        
+    }
+        
         });
+            
+        });
+
+
     </script>
 
     <!-- Custom JS -->
