@@ -26,8 +26,8 @@
 
     <div class="container h-60 my-4">
         <div class="row">
-         <div class="col-xl-12 bg-secondary bg-gradient bg-opacity-50">
-            <h2>Tabla de Socios</h2>
+         <div class="col-xl-12 bg-secondary bg-gradient bg-opacity-50 cl">
+            <h2 class="TituloABM">Tabla de Socios</h2>
             
             <table id="tabla-socios-localidades" class="display responsive table nowrap table-striped" width="100%">
                 <button id="btn_Socios"><i class="fa-solid fa-user-plus"></i> Nuevo Socio</button>
@@ -107,7 +107,7 @@
     ordering: false,
     //Tamaño de la tabla
     //
-    scrollY: "225px",
+    scrollY: "240px",
     lengthMenu: [5, 10, 15, 20, 100, 200, 500],
     columnDefs: [
         { className: "centered", targets: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10] },
@@ -118,7 +118,14 @@
         //
         { width: "10%", targets: [7] },
         { width: "20%", targets: [1] },
-        { width: "10%", targets: [0] }
+        { width: "10%", targets: [0] },
+        // Prioridad de las columnas responsive
+        // 
+        { responsivePriority: 2, targets: 10 },
+        { responsivePriority: 3, targets: 1 },
+        { responsivePriority: 4, targets: 8 },
+        { responsivePriority: 5, targets: 7 },
+        { responsivePriority: 1, targets: 0 },
     ],
     pageLength: 6,
     destroy: true,

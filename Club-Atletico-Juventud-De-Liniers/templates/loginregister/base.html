@@ -34,7 +34,7 @@
             <ul id="ContenedorMenu">
 
                 <li class="ItemMenu Logo centrado"><a title="Volver al menu principal" class="centrado" href={% url 'home' %}><img class="LogoMenu" src="https://github.com/MarcoNu97/Proyecto_CAJL/blob/main/Interfaz%20Principal/ImagenesHome/EscudoHome.png?raw=true" alt="LogoClub"></a></li>
-                <li class="ItemMenu"><a title="Volver al menu principal" class="Texto centrado Tx animate__animated animate__pulse" href={% url 'home' %}>Club Atlético Juventud de Liniers</a></li>
+                <li class="ItemMenu Titulo"><a title="Volver al menu principal" class="Texto centrado Tx animate__animated animate__pulse" href={% url 'home' %}>Club Atlético Juventud de Liniers</a></li>
                 {% if request.user.is_authenticated %}
                 <li class="ItemMenu M2 h centrado"><a class="h centrado" href={% url 'socios' %}>Socios</a></li>
                 <li class="ItemMenu M2 h centrado">
