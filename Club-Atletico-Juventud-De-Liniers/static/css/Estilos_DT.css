@@ -1,5 +1,11 @@
 /* Estilos del DataTable */
 /* ------- */
+
+div.container { 
+    max-width: 1700px;
+
+}
+
 .Contenedor {
 
     height: 100vh;
@@ -25,7 +31,6 @@
 .centered {
     text-align: center !important;
     vertical-align: middle !important;
-    word-wrap: break-word !important;
 }
 
 #btn_Socios{
